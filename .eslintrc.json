@@ -1,0 +1,50 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 2020,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "@typescript-eslint",
+        "react-hooks"
+    ],
+    "extends": [
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "prettier"
+    ],
+    "rules": {
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
+        "react/prop-types": "off",
+        "sort-imports": "off",
+        "no-use-before-define": "off",
+        "max-lines-per-function": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/no-unused-vars": "off",
+        "no-undef": "off",
+        "func-style": "off",
+        "no-duplicate-imports": "off",
+        "no-eq-null": "off",
+        "no-console": "off",
+        "eqeqeq": "off",
+        "one-var": "off",
+        "require-unicode-regexp": "off",
+        "prefer-named-capture-group": "off",
+        "consistent-return": "off",
+        "@typescript-eslint/no-var-requires": "off",
+        "default-case": "off",
+        "react/jsx-key": "off",
+        "class-methods-use-this": "off",
+        "vars-on-top": "off",
+        "no-await-in-loop": "off",
+        "camelcase": "off",
+        "guard-for-in": "off"
+    },
+    "settings": {
+        "react": {
+            "pragma": "React",
+            "version": "detect"
+        }
+    }
+}
