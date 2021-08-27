@@ -26,6 +26,15 @@ const Cleanup: React.FC = () => {
       console.log(`running the cleanup phase of ${count}.`);
     };
   });
+
+  useEffect(() => {
+    const id = setInterval(() => console.log("i am being called."), 3000);
+
+    return () => {
+      clearInterval(id);
+    };
+  });
+
   return (
     <Box height={"100vh"}>
       <Button label="Click!" onClick={() => setCount((c) => c + 1)} />
