@@ -1,12 +1,36 @@
 import React, { useState } from "react";
-import { ChakraProvider } from "@chakra-ui/react";
+import { Center, Button, ChakraProvider, Heading } from "@chakra-ui/react";
 import { useEffect } from "react";
 
 const App: React.FC = () => {
   return (
     <ChakraProvider>
-      <Component />
+      <Cleanup />
     </ChakraProvider>
+  );
+};
+
+const Cleanup: React.FC = () => {
+  const [count, setCount] = useState(0);
+  // useEffect is a function that gets called every time FC is rerun.
+  // it gets called with a new set of const count.
+
+  // each time this component is rerun count gets fixed by react.
+  // this means each render has its own isolated useEffects that know
+  // nothing about previous runs.
+  // while jsx trees can be diffed automatically, we need
+  // to tell react on which data our effects depend upon.
+  useEffect(() => {
+    setTimeout(() => (document.title = `Count: ${count}`), 3000);
+    return () => {
+      console.log(`running the cleanup phase of ${count}.`);
+    };
+  });
+  return (
+    <Center h={"100vh"}>
+      <Button onClick={() => setCount((c) => c + 1)}>Click!</Button>
+      <Heading>You clicked the button {count} times.</Heading>
+    </Center>
   );
 };
 
