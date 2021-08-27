@@ -1,13 +1,25 @@
 from pathlib import Path
 import json
-
-root_dir = Path("C:\\Users\\semha\\Downloads\\Basic")
+import argparse
 
 entries = {}
 
+parser = argparse.ArgumentParser(
+    description="Parse a directory of audio files.")
+parser.add_argument('directory', metavar='D',
+                    nargs=1, help="The directory to be parsed.")
+args = parser.parse_args()
+root_dir = Path(args.directory.pop())
+
 for volume_dir in root_dir.iterdir():
-    print(volume_dir)
-    volume_number = volume_dir.name.split(' ').pop()
+    if volume_dir.is_file():
+        continue
+    last_part = volume_dir.name.split(' ').pop()
+
+    try:
+        volume_number = int(last_part)
+    except ValueError:
+        continue
 
     entries[volume_number] = {}
     entries[volume_number]["units"] = {}

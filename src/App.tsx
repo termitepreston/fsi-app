@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { Center, Button, ChakraProvider, Heading } from "@chakra-ui/react";
-import { useEffect } from "react";
+import { Box, Button, Grommet, Heading } from "grommet";
+import React, { useState, useEffect } from "react";
+import { hpe } from "grommet-theme-hpe";
 
 const App: React.FC = () => {
   return (
-    <ChakraProvider>
+    <Grommet theme={hpe}>
       <Cleanup />
-    </ChakraProvider>
+    </Grommet>
   );
 };
 
@@ -27,10 +27,10 @@ const Cleanup: React.FC = () => {
     };
   });
   return (
-    <Center h={"100vh"}>
-      <Button onClick={() => setCount((c) => c + 1)}>Click!</Button>
+    <Box height={"100vh"}>
+      <Button label="Click!" onClick={() => setCount((c) => c + 1)} />
       <Heading>You clicked the button {count} times.</Heading>
-    </Center>
+    </Box>
   );
 };
 
