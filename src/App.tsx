@@ -1,11 +1,37 @@
-import { Box, Button, Grommet, Heading } from "grommet";
+import { Box, Button, Grommet, Heading, Grid, Select } from "grommet";
 import React, { useState, useEffect } from "react";
 import { hpe } from "grommet-theme-hpe";
+import { Document, Page } from "react-pdf/dist/esm/entry.webpack";
 
 const App: React.FC = () => {
   return (
     <Grommet theme={hpe}>
-      <Cleanup />
+      <Grid
+        rows={["1fr"]}
+        columns={["1fr", "medium"]}
+        areas={[
+          { name: "pdf-reader", start: [0, 0], end: [0, 0] },
+          { name: "audio-player", start: [1, 0], end: [1, 0] },
+        ]}
+        height="100vh"
+      >
+        <Box gridArea="pdf-reader">
+          <Document file="C:\\Users\semha\Downloads\test.pdf">
+            <Page pageNumber={3} />
+          </Document>
+        </Box>
+        <Box gridArea="audio-player" direction="column">
+          <Box direction="row" gap="small">
+            <Select options={["Volume"]} value="Volume" />
+            <Select options={["Unit"]} value="Unit" />
+          </Box>
+          <audio
+            controls
+            src="C://Users/semha/Downloads/Basic/Volume 1/FSI - German Basic Course - Volume 1 - Unit 01 1.1.mp3"
+            style={{ width: "100%" }}
+          ></audio>
+        </Box>
+      </Grid>
     </Grommet>
   );
 };
