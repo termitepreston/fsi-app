@@ -1,7 +1,8 @@
 import { Box, Button, Grommet, Heading, Grid, Select } from "grommet";
 import React, { useState, useEffect } from "react";
 import { hpe } from "grommet-theme-hpe";
-import { Document, Page } from "react-pdf/dist/esm/entry.webpack";
+// This required changing the string literal to URL object.
+import { Document, Page } from "react-pdf/dist/esm/entry.parcel";
 
 const App: React.FC = () => {
   return (
